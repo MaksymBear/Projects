@@ -1,0 +1,21 @@
+.button {
+  color: #faf4ea;
+  border-radius: 8px;
+  border: 2px solid #819b57;
+  background: #819b57;
+}
+
+.button:hover {
+  color: #465929;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button:focus {
+  background-color: green;
+  color: #faf4ea;
+}
+
+.button:active {
+  background-color: aqua;
+}
