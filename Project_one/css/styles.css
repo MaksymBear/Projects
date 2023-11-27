@@ -76,18 +76,26 @@ ul {
   border: 2px solid var(--color-brand-normal);
   background: var(--color-brand-normal);
   padding: 16px 32px;
+  cursor: pointer;
 }
 
 .button:hover {
   color: var(--color-brand-dark);
   background-color: transparent;
-  cursor: pointer;
 }
+
+/* .button:disabled {
+  color: gray;
+  background-color: lightgray;
+  border-color: currentColor;
+  cursor: not-allowed;
+} */
 
 /* Link */
 .link {
   color: var(--color-primary-light);
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .link:hover {
@@ -95,6 +103,14 @@ ul {
 }
 
 /* Header */
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  padding-top: 32px;
+}
+
 .header-container {
   display: flex;
   flex-direction: row;
@@ -122,7 +138,13 @@ ul {
 .hero-section {
   padding: 272px 0;
   /* background-color: gainsboro; */
-  background-image: url("../images/pictures/section_1/hero-section_background.jpg");
+  background-image: linear-gradient(
+      103deg,
+      rgba(18, 18, 17, 0.78) 2.03%,
+      rgba(18, 18, 17, 0.6) 58.46%,
+      rgba(18, 18, 17, 0) 90.36%
+    ),
+    url('../images/pictures/section_1/hero-section_background.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   /*  */
@@ -231,7 +253,7 @@ ul {
 }
 
 .chefs-title {
-  max-width: 520px;
+  position: relative;
   margin: 0 auto 80px;
 }
 
@@ -239,10 +261,21 @@ ul {
 
 .chefs-title::before,
 .chefs-title::after {
-  display: block;
+  /* из-за position: absolute эелемент автоматически становится блоковым, нет необходимости прописывать display:block  */
+  /* display: block; */
+  position: absolute;
+  bottom: 24px;
   width: 352px;
   border: 2px solid var(--color-brand-light);
-  content: "";
+  content: '';
+}
+
+.chefs-title::before {
+  left: 0;
+}
+
+.chefs-title::after {
+  right: 0;
 }
 
 .chefs-list {
@@ -309,13 +342,18 @@ ul {
   /* background-image: url("../images/pictures/section_4/walrus-formats_1.jpg"); */
   border: 1px solid grey;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px;
   background-image: linear-gradient(
     180deg,
     rgba(49, 38, 26, 0) 55.21%,
     rgba(49, 38, 26, 0.71) 72.92%,
     var(--color-primary-dark) 100%
   );
+  transition: transform 0.3s;
+}
+
+.format-article:hover {
+  transform: scale(1.05);
 }
 
 .formats-title {
@@ -349,6 +387,9 @@ ul {
   fill: var(--color-primary-light);
 }
 
+.carousel-button.next {
+  transform: rotate(180deg);
+}
 /* Contacts-section */
 
 .contact-section {
@@ -359,8 +400,8 @@ ul {
   gap: 32px;
 }
 
-.contact-form {
-}
+/* .contact-form {
+} */
 
 .contact-map {
   flex-shrink: 0;
@@ -375,12 +416,35 @@ ul {
 /* Footer */
 
 .footer {
+  position: relative;
   padding: 32px 0;
-  background-image: url("../images/pictures/Footer/footer-backgrounde.png");
+  background-image: url('../images/pictures/Footer/footer-backgrounde.png');
   background-color: var(--color-primary-dark);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.footer::before,
+.footer::after {
+  position: absolute;
+  bottom: 0;
+  background-repeat: no-repeat;
+  content: '';
+}
+
+.footer::before {
+  width: 180px;
+  height: 120px;
+  left: 0;
+  background-image: url('../images/pictures/Footer/bread/decor-bread-one.png');
+}
+
+.footer::after {
+  width: 380px;
+  height: 190px;
+  right: 0;
+  background-image: url('../images/pictures/Footer/bread/decor-bread-two.png');
 }
 
 .footer-container {
@@ -431,4 +495,158 @@ ul {
   font-weight: 400;
 }
 
-/* Footer */
+/* Modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Время, которая мы задаём , перед тем, как перейти в .is-hidden */
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.backdrop.is-hidden {
+  /* Не совсем корректно использовать display:none, так как, возможно потом, захочется анимировать этот элемент */
+  /* display: none; */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: 0;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  height: 100%;
+  max-height: 880px;
+  padding: 128px;
+  border-radius: 32px;
+  background-color: var(--color-primary-light);
+  overflow-y: auto;
+}
+
+.modal-btn-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+/* Form */
+
+.form-field {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  /* display: block; */
+  top: 16px;
+  left: 42px;
+  /* font-size: 16px;
+  line-height: 1.17; */
+  /* transform: translate(-36px, 39px); */
+  /* transition: transform 0.3s; */
+}
+
+.form-input {
+  padding: 16px 42px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.17;
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary-dark);
+  background-color: transparent;
+}
+
+.form-input:focus {
+  border-color: var(--color-brand-normal);
+  outline: none;
+}
+
+/* .form-input:placeholder-shown {
+  background-color: blue;
+} */
+
+/* .form-input:required {
+  border-color: red;
+} */
+
+.form-input:disabled {
+  border-color: lightgray;
+}
+
+.form-input:disabled::placeholder {
+  color: lightgray;
+}
+
+/* .form-field:focus-within .form-label {
+  transform: translate(-36px, 39px);
+} */
+
+.form-input::placeholder {
+  color: var(--color-secondary-dark);
+  font-size: 16px;
+  line-height: 1.17;
+}
+
+.form-input:focus::placeholder {
+  color: var(--color-primary-dark);
+}
+
+.form-button {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.form-terms {
+  max-width: 220px;
+  margin: 0 auto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5; /* 18 / 12 */
+  text-align: center;
+}
+
+.form-terms-link {
+  color: var(--color-primary-dark);
+  text-underline-offset: 2px;
+}
+
+/* .checkbox-input {
+  appearance: none;
+}
+
+.checkbox-input:checked + .checkbox-label::before {
+  /* Здесь установить иконку */
+/* background-color: green;
+}
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox-label {
+  padding-left: 24px;
+}
+
+.checkbox-label::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 5px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 2px;
+  content: '';
+} */

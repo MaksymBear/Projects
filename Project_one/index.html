@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <div class="container">
         <div class="header-container">
           <!-- <div class="nav-flex"> -->
@@ -29,7 +29,9 @@
           </nav>
           <!-- </div> -->
 
-          <button class="button" type="button">Замовити дзвінок</button>
+          <button class="button modal-btn-open" type="button">
+            Замовити дзвінок
+          </button>
         </div>
       </div>
     </header>
@@ -82,7 +84,8 @@
       <section class="section" id="chef-section">
         <div class="container">
           <h2 class="chefs-title section-title centered">
-            Нашi Найкращi <span class="accent">шеф-кухарi</span>
+            Нашi Найкращi <br />
+            <span class="accent">шеф-кухарi</span>
           </h2>
           <!-- <div class="chefs-container"> -->
           <ul class="chefs-list">
@@ -179,7 +182,7 @@
                 </article>
               </li>
             </ul>
-            <button class="carousel-button" type="button">
+            <button class="carousel-button next" type="button">
               <svg width="24" height="24">
                 <use href="images/logo/icons.svg#icon-arrow-left2"></use>
               </svg>
@@ -195,6 +198,54 @@
                 Приєднуйся до мережi пекарень
               </h2>
               <p>Заповни форму, щоб ми звʼязались з тобою!</p>
+              <form name="contact-form" autocomplete="off" novalidate>
+                <div class="form-field">
+                  <label class="form-label hidden" for="user-name">Ім’я</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    name="user-name"
+                    id="user-name"
+                    placeholder="Ім’я"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label hidden" for="user-tel"
+                    >Телефон</label
+                  >
+                  <input
+                    class="form-input"
+                    type="tel"
+                    name="user-tel"
+                    id="user-tel"
+                    placeholder="Телефон"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label hidden" for="user-email"
+                    >Електронна пошта</label
+                  >
+                  <input
+                    class="form-input"
+                    type="email"
+                    name="user-email"
+                    id="user-email"
+                    placeholder="Електронна пошта"
+                  />
+                </div>
+
+                <button class="form-button button" type="submit">
+                  Замовити дзвінок
+                </button>
+                <p class="form-terms">
+                  Натискаючи на кнопку я погоджуюсь
+                  <a class="form-terms-link" href="#"
+                    >з політикою конфіденційності</a
+                  >
+                </p>
+              </form>
             </div>
 
             <iframe
@@ -281,5 +332,119 @@
         </div>
       </div>
     </footer>
+
+    <div class="backdrop">
+      <div class="modal">
+        <button class="modal-btn-close" type="button">Close</button>
+        <h2>Замовити дзвінок</h2>
+        <p>Залишіть заявку та наш спеціаліст зв'яжеться з Вами!</p>
+        <form name="modal-form" autocomplete="off">
+          <div class="form-field">
+            <label class="form-label hidden" for="user-name">Ім’я</label>
+            <input
+              class="form-input"
+              type="text"
+              name="user-name"
+              id="user-name"
+              placeholder="Ім’я"
+              minlength="2"
+              maxlength="20"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label class="form-label hidden" for="user-tel">Телефон</label>
+            <input
+              class="form-input"
+              type="tel"
+              name="user-tel"
+              id="user-tel"
+              placeholder="Телефон"
+              minlength="2"
+              maxlength="20"
+              required
+              pattern="^\+[0-9]{12}"
+            />
+          </div>
+
+          <!-- min and max for number -->
+          <div class="form-field">
+            <label class="form-label hidden" for="user-email"
+              >Електронна пошта</label
+            >
+            <input
+              class="form-input"
+              type="email"
+              name="user-email"
+              id="user-email"
+              placeholder="Електронна пошта"
+              required
+            />
+          </div>
+
+          <!-- <div class="checkbox">
+            <input
+              class="checkbox-input hidden"
+              type="checkbox"
+              id="term-conditions"
+              name="term-conditions"
+            />
+            <label class="checkbox-label" for="term-conditions"
+              >Я погоджуюсь з політикою конфіденційності</label
+            >
+          </div> -->
+
+          <button class="form-button button" type="submit">
+            Замовити дзвінок
+          </button>
+          <p class="form-terms">
+            Натискаючи на кнопку я погоджуюсь
+            <a class="form-terms-link" href="#">з політикою конфіденційності</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
   </body>
 </html>
+
+<!-- <h2>Замовити дзвінок</h2>
+        Для radio можно использовать одинаковые name
+        <p>Залишіть заявку та наш спеціаліст зв'яжеться з Вами!</p>
+        <form name="contact-form" autocomplete="off" novalidate>
+          <label for="user-name">Введіть ваше ім'я</label>
+          <input type="text" id="user-name" name="user-name" />
+
+          <input type="checkbox" id="small" name="size-s" />
+          <label for="small">Small</label>
+
+          <input type="checkbox" id="medium" name="size-m" />
+          <label for="medium">Medium</label>
+
+          <input type="checkbox" id="large" name="size-l" />
+          <label for="large">Large</label>
+        </form> -->
+
+<!-- <Textarea></Textarea> -->
+<!-- <label for="user-comment">Введіть ваш коментар</label>
+          <textarea name="user-comment" id="user-comment"></textarea> -->
+
+<!-- Select -->
+
+<!-- <fieldset>
+  <legend>Додаткова информацiя</legend> -->
+<!-- <select name="" id="">
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+          </select> -->
+<!-- </fieldset> -->
+
+<!-- 
+  hidden
+  placeholder="Ім’я"
+  placeholder="Телефон"
+  placeholder="Електронна пошта"
+ -->
