@@ -1,0 +1,121 @@
+@import './utils/fonts';
+@import './utils/variables';
+
+/* Base */
+@import './base';
+
+@import './utils/utils';
+
+// Section
+@import './utils/texts';
+
+@import './layouts/sections';
+
+.container {
+  width: 100%;
+  max-width: 1288px;
+  margin: 0 auto;
+}
+
+/* Button */
+@import './components/buttons';
+/* .button:disabled {
+  color: gray;
+  background-color: lightgray;
+  border-color: currentColor;
+  cursor: not-allowed;
+} */
+
+/* Link */
+@import './components/links';
+/* Header */
+@import './layouts/header';
+@import './layouts/mobile-menu';
+/* Hero section */
+
+@import './layouts/hero-section';
+
+/* Advantage-list */
+
+@import './layouts/advantages-section';
+
+// Mixins (Example)
+@import './utils/mixins';
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.circle-big {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+// OR
+
+.circle {
+  @include circle(100px, 100px, white);
+}
+.circle-big {
+  @include circle(200px, 200px, red);
+}
+
+/* Tradition section */
+@import './layouts/traditions-section';
+/* Chef-section */
+@import './components/chef-cards';
+
+@import './layouts/chefs-section';
+
+/* Formats section */
+
+@import './layouts/formats-section';
+@import './components/carousel-button';
+@import './components/format-article';
+@import './components/pagination';
+/* Contacts-section */
+
+@import './layouts/contacts-section';
+@import './layouts/form-terms';
+@import './components/input';
+/* Footer */
+
+@import './layouts/footer';
+
+/* Modal */
+
+@import './layouts/modal';
+
+/* Form */
+@import './layouts/forms';
+
+/* .checkbox-input {
+  appearance: none;
+}
+
+.checkbox-input:checked + .checkbox-label::before {
+  /* Здесь установить иконку */
+/* background-color: green;
+}
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox-label {
+  padding-left: 24px;
+}
+
+.checkbox-label::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 5px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 2px;
+  content: '';
+} */

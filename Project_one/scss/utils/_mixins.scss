@@ -1,0 +1,7 @@
+@mixin circle($width, $height, $color) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+}
+
+// Mixins сделаны для того, если декоративные элементы на тсранице повторяются определённое количество раз и имеют разные параметры
